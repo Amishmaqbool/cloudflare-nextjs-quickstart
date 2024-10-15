@@ -1,21 +1,28 @@
-import '@/styles/global.css';
+import localFont from "next/font/local";
+import "./globals.css";
+const geistSans = localFont({
+  src: "../assets/fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "../assets/fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
-import clsx from 'clsx';
-import { Inter } from 'next/font/google';
-
-const fontFamily = Inter({ subsets: ['latin'], variable: '--font-primary' });
-
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body className={clsx('bg-gray-950 text-gray-50 p-4', fontFamily.variable)}>{children}</body>
+    <html lang="en" className="antialiased">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f7f7f7]`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

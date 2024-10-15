@@ -8,6 +8,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["images.ctfassets.net"],
+    formats: ["image/avif", "image/webp"],
+    unoptimized: true,
+  },
+};
 
 export default nextConfig;

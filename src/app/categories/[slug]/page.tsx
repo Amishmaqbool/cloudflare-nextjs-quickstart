@@ -4,7 +4,7 @@ import CategoryPage from "@/components/CategoryPage";
 import AppsByTag from "@/components/AppsByTag";
 import CategoriesSection from "@/components/CategoriesSection";
 import Layout from "@/layout/layout";
-
+export const runtime = 'edge';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const categoriesPage = (await getObject("categoriesPage", {
     "fields.slug": params.slug,

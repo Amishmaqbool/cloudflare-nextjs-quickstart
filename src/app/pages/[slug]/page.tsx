@@ -2,7 +2,6 @@
 import { getObject } from "@/lib/contentful";
 import Layout from "@/layout/layout";
 import { marked } from "marked";
-
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const blogPost = await getObject('blogPost', { 'fields.slug': params.slug });
 
@@ -35,6 +34,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
   };
 }
+
+export const runtime = 'edge';
 
 const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
   const blogPost = await getObject('blogPost', { 'fields.slug': params.slug });

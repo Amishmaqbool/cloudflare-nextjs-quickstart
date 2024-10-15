@@ -4,7 +4,7 @@ import { AppProps } from "@/lib/type";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-
+export const runtime = 'edge';
 interface SearchPageProps {
   searchParams: { query?: string };
 }

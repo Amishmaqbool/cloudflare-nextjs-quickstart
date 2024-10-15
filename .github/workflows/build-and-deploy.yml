@@ -9,24 +9,22 @@ jobs:
       contents: read
       deployments: write
     name: Deploy to Cloudflare Pages
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Build
-        run: pnpm run pages:build
+        run: npm run pages:build
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
@@ -34,5 +32,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy
-          packageManager: pnpm
+          packageManager: npm
           wranglerVersion: "3.53.1"

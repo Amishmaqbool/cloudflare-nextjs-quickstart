@@ -7,7 +7,9 @@ import Layout from "@/layout/layout";
 interface PageProps {
   params: { slug: string };
 }
-export const runtime = 'edge'
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: PageProps) {
   const appsPage = (await getObject("appsPage", {

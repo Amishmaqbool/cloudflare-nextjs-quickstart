@@ -7,7 +7,7 @@ import Layout from "@/layout/layout";
 interface PageProps {
   params: { slug: string };
 }
-export const config = { runtime : 'edge';}
+export const config = { runtime : 'edge'};
 
 export async function generateMetadata({ params }: PageProps) {
   const appsPage = (await getObject("appsPage", {
